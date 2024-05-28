@@ -1,0 +1,11 @@
+{
+    "version": "0.2.1",
+    "tasks": [
+        {
+            "taskLabel": "task-fallout1-ce",
+            "appliesTo": "/",
+            "type": "launch",
+            "workingDirectory": "D:\\SteamLibrary\\steamapps\\common\\Fallout"
+        }
+    ]
+}

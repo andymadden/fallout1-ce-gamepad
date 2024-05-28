@@ -882,6 +882,41 @@ int game_handle_input(int eventCode, bool isInCombatMode)
     case KEY_ARROW_DOWN:
         map_scroll(0, 1);
         break;
+    case GAMEPAD_START:
+        if (intface_is_enabled()) {
+            gsound_play_sfx_file("ib1p1xx1");
+            do_options();
+        }
+        break;
+    case GAMEPAD_DPAD_UP:
+        map_scroll(0, -1);
+        break;
+    case GAMEPAD_DPAD_DOWN:
+        map_scroll(0, 1);
+        break;
+    case GAMEPAD_DPAD_LEFT:
+        map_scroll(-1, 0);
+        break;
+    case GAMEPAD_DPAD_RIGHT:
+        map_scroll(1, 0);
+        break;
+    case GAMEPAD_X:
+        // pipboy
+        if (intface_is_enabled()) {
+            if (isInCombatMode) {
+                gsound_play_sfx_file("iisxxxx1");
+
+                // Pipboy not available in combat!
+                MessageListItem messageListItem;
+                char title[128];
+                strcpy(title, getmsg(&misc_message_file, &messageListItem, 7));
+                dialog_out(title, NULL, 0, 192, 116, colorTable[32328], NULL, colorTable[32328], 0);
+            } else {
+                gsound_play_sfx_file("ib1p1xx1");
+                pipboy(false);
+            }
+        }
+        break;
     }
 
     return 0;

@@ -1086,6 +1086,8 @@ void GNW95_process_message()
     // it again.
 
     KeyboardData keyboardData;
+    SDL_GameController* controller;
+
     SDL_Event e;
     while (SDL_PollEvent(&e)) {
         switch (e.type) {
@@ -1134,6 +1136,15 @@ void GNW95_process_message()
             break;
         case SDL_QUIT:
             exit(EXIT_SUCCESS);
+            break;
+        case SDL_CONTROLLERBUTTONDOWN:
+            break;
+        case SDL_CONTROLLERBUTTONUP:
+            controller = SDL_GameControllerFromInstanceID(e.cbutton.which);
+            GNW_add_input_buffer(0x0FFFFFFF - e.cbutton.button);
+            break;
+        case SDL_CONTROLLERDEVICEADDED:
+            controller = SDL_GameControllerOpen(e.cdevice.which);
             break;
         }
     }
@@ -1200,6 +1211,25 @@ static void GNW95_process_key(KeyboardData* data)
 
         kb_simulate_key(data);
     }
+}
+
+void GNW95_process_gamepad_button(int button) {
+    inputdata* input = &(input_buffer[input_put]);
+    input->input = 0x0FFFFFFF - button;
+    
+    mouse_get_position(&(input->mx), &(input->my));
+
+    input_put++;
+
+    if (input_put == 40) {
+        input_put = 0;
+        return;
+    }
+
+    if (input_put == -1) {
+        input_put = 0;
+    }
+
 }
 
 // 0x4B4734

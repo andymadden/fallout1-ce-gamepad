@@ -1,50 +1,72 @@
 {
   "configurations": [
     {
-      "name": "x86-Debug",
-      "generator": "Visual Studio 16 2019",
-      "configurationType": "Debug",
-      "inheritEnvironments": [ "msvc_x86" ],
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
-      "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "",
-      "buildCommandArgs": "",
-      "ctestCommandArgs": ""
+        "name": "x86-Debug",
+        "generator": "Visual Studio 17 2022",
+        "configurationType": "Debug",
+        "inheritEnvironments": [ "msvc_x86" ],
+        "buildRoot": "${projectDir}\\out\\build\\${name}",
+        "installRoot": "${projectDir}\\out\\install\\${name}",
+        "cmakeCommandArgs": "",
+        "buildCommandArgs": "",
+        "ctestCommandArgs": "",
+        "variables": [
+            {
+                "name": "GIT_VERSION_STRING",
+                "value": "git version 2.45.1.windows.1"
+            }
+        ]
     },
     {
-      "name": "x86-Release",
-      "generator": "Visual Studio 16 2019",
-      "configurationType": "Release",
-      "inheritEnvironments": [ "msvc_x86" ],
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
-      "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "",
-      "buildCommandArgs": "",
-      "ctestCommandArgs": ""
+        "name": "x86-Release",
+        "generator": "Visual Studio 17 2022",
+        "configurationType": "Release",
+        "inheritEnvironments": [ "msvc_x86" ],
+        "buildRoot": "${projectDir}\\out\\build\\${name}",
+        "installRoot": "${projectDir}\\out\\install\\${name}",
+        "cmakeCommandArgs": "",
+        "buildCommandArgs": "",
+        "ctestCommandArgs": "",
+        "variables": [
+            {
+                "name": "GIT_VERSION_STRING",
+                "value": "git version 2.45.1.windows.1"
+            }
+        ]
     },
     {
-      "name": "x64-Debug",
-      "generator": "Visual Studio 16 2019 Win64",
-      "configurationType": "Debug",
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
-      "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "",
-      "buildCommandArgs": "",
-      "ctestCommandArgs": "",
-      "inheritEnvironments": [ "msvc_x64_x64" ],
-      "variables": []
+        "name": "x64-Debug",
+        "generator": "Visual Studio 17 2022 Win64",
+        "configurationType": "Debug",
+        "buildRoot": "${projectDir}\\out\\build\\${name}",
+        "installRoot": "${projectDir}\\out\\install\\${name}",
+        "cmakeCommandArgs": "",
+        "buildCommandArgs": "",
+        "ctestCommandArgs": "",
+        "inheritEnvironments": [ "msvc_x64_x64" ],
+        "variables": [
+            {
+                "name": "GIT_VERSION_STRING",
+                "value": "git version 2.45.1.windows.1"
+            }
+        ]
     },
     {
       "name": "x64-Release",
-      "generator": "Visual Studio 16 2019 Win64",
+      "generator": "Visual Studio 17 2022 Win64",
       "configurationType": "Release",
       "buildRoot": "${projectDir}\\out\\build\\${name}",
       "installRoot": "${projectDir}\\out\\install\\${name}",
       "cmakeCommandArgs": "",
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
-      "inheritEnvironments": [ "msvc_x64_x64" ],
-      "variables": []
+        "inheritEnvironments": [ "msvc_x64_x64" ],
+        "variables": [
+            {
+                "name": "GIT_VERSION_STRING",
+                "value": "git version 2.45.1.windows.1"
+            }
+        ]
     }
   ]
 }

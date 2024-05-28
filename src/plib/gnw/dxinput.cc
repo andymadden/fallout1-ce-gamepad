@@ -17,6 +17,10 @@ bool dxinput_init()
         return false;
     }
 
+   if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) != 0) {
+        return false;
+    }
+
     if (!dxinput_mouse_init()) {
         goto err;
     }
@@ -38,6 +42,7 @@ err:
 void dxinput_exit()
 {
     SDL_QuitSubSystem(SDL_INIT_EVENTS);
+    SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 }
 
 // 0x4E04E8

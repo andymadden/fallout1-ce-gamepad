@@ -49,6 +49,7 @@ void GNW95_input_exit();
 void GNW95_process_message();
 void GNW95_clear_time_stamps();
 void GNW95_lost_focus();
+void GNW95_process_gamepad_button(int button);
 
 void beginTextInput();
 void endTextInput();

@@ -259,6 +259,8 @@ target_sources(${EXECUTABLE_NAME} PUBLIC
     "src/movie_lib.h"
     "src/sound_decoder.cc"
     "src/sound_decoder.h"
+    "src/game/ggamepad.cc"
+    "src/game/ggamepad.h"
 )
 
 target_sources(${EXECUTABLE_NAME} PUBLIC
@@ -294,9 +296,7 @@ if(WIN32)
     target_link_libraries(${EXECUTABLE_NAME}
         winmm
     )
-endif()
 
-if (WIN32)
     target_sources(${EXECUTABLE_NAME} PUBLIC
         "os/windows/fallout-ce.ico"
         "os/windows/fallout-ce.rc"
@@ -378,3 +378,13 @@ if(APPLE)
 
     include(CPack)
 endif()
+
+add_custom_command(
+    OUTPUT SYMBOLIC gang
+    DEPENDS ${EXECUTABLE_NAME}
+    COMMAND copy C:\\Users\\andre\\source\\repos\\fallout1-ce\\out\\build\\x64-Release\\Release\\fallout-ce.exe D:\\SteamLibrary\\steamapps\\common\\Fallout\\
+    COMMAND D:\\SteamLibrary\\steamapps\\common\\Fallout\\fallout-ce.exe
+    WORKING_DIRECTORY D:\\SteamLibrary\\steamapps\\common\\Fallout\\
+)
+add_custom_target(run_game DEPENDS gang)
+
