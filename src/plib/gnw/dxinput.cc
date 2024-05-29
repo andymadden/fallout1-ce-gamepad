@@ -21,6 +21,10 @@ bool dxinput_init()
         return false;
     }
 
+    if (SDL_InitSubSystem(SDL_INIT_JOYSTICK) != 0) {
+        return false;
+    }
+
     if (!dxinput_mouse_init()) {
         goto err;
     }

@@ -27,6 +27,7 @@ if (ANDROID)
     add_library(${EXECUTABLE_NAME} SHARED)
 else()
     add_executable(${EXECUTABLE_NAME} WIN32 MACOSX_BUNDLE)
+    target_compile_features(${EXECUTABLE_NAME} PRIVATE cxx_std_17)
 endif()
 
 if(ASAN)
@@ -378,13 +379,3 @@ if(APPLE)
 
     include(CPack)
 endif()
-
-add_custom_command(
-    OUTPUT SYMBOLIC gang
-    DEPENDS ${EXECUTABLE_NAME}
-    COMMAND copy C:\\Users\\andre\\source\\repos\\fallout1-ce\\out\\build\\x64-Release\\Release\\fallout-ce.exe D:\\SteamLibrary\\steamapps\\common\\Fallout\\
-    COMMAND D:\\SteamLibrary\\steamapps\\common\\Fallout\\fallout-ce.exe
-    WORKING_DIRECTORY D:\\SteamLibrary\\steamapps\\common\\Fallout\\
-)
-add_custom_target(run_game DEPENDS gang)
-
